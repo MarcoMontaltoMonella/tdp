@@ -14,8 +14,8 @@ public class DAOword {
 	}
 	
 	public boolean existsWordStartingWith(String begin){
-		//EDIT
-		System.out.println("You've been edited!");
+
+		
 		return false;
 	}
 	
