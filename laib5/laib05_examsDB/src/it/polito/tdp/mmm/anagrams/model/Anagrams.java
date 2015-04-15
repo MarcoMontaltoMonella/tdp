@@ -74,7 +74,8 @@ public class Anagrams {
 		System.out.println(dao.countWords());
 		System.out.println(dao.getWordsOfLenght(28));
 		System.out.println(dao.contains("casa"));
-		System.out.println(dao.getWordsStartingWith("caset"));
+		System.out.println(dao.containsWordStartingWith("solar"));
+		System.out.println(dao.getWordsStartingWith("solar"));
 		
 	}
 	

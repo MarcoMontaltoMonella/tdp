@@ -54,11 +54,11 @@ public class DAOword {
 		try {
 			String template = "SELECT nome "+
 					"FROM dizionario.parola "+
-					"WHERE nome=?%";
+					"WHERE nome LIKE ?";
 					
 			PreparedStatement st = conn.prepareStatement(template);
 			
-			st.setString(1, begin);
+			st.setString(1, begin+"%");
 			
 			res = st.executeQuery();
 			
@@ -140,15 +140,15 @@ public class DAOword {
 	public boolean containsWordStartingWith(String word){
 		Connection conn = DBConnect.getConnection();
 		ResultSet res = null;
-				
+		
 		try {
 			String template = "SELECT nome "+
 					"FROM dizionario.parola "+
-					"WHERE nome=?"+"%";
+					"WHERE nome LIKE ?";
 					
 			PreparedStatement st = conn.prepareStatement(template);
 			
-			st.setString(1, word);
+			st.setString(1, word+"%");
 			
 			res = st.executeQuery();
 			
