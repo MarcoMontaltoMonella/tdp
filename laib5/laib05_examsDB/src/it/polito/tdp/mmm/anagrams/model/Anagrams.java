@@ -29,6 +29,22 @@ public class Anagrams {
 		return result;
 	}
 	
+	private void recurse(String wordAlreadyBuilt, List<String> missingLetters) {
+		
+		
+		
+		if (missingLetters.isEmpty()) {
+			this.result.add(wordAlreadyBuilt);
+		} else {
+			for (String singleLetter : missingLetters) {
+				List<String> subset = new LinkedList<>(missingLetters);
+				subset.remove(singleLetter);
+				recurse(wordAlreadyBuilt+singleLetter,subset);
+			}
+		}
+	}
+	
+	
 	public List<String> anagramUsingDatabaseOf(String word) {
 		if (word.length() >= 6) {
 			System.err.println("Max length exceeded!");
@@ -46,22 +62,23 @@ public class Anagrams {
 			letters.add(word.substring(i, i + 1));
 		}
 
-		this.recurse("", letters);
-
+		this.recurseWithDB("", letters);
+		
 		return result;
 	}
 	
 	
-	
-	private void recurse(String wordAlreadyBuilt, List<String> missingLetters) {
-
+	private void recurseWithDB(String wordAlreadyBuilt, List<String> missingLetters) {
+		DAOword dao = new DAOword();
 		if (missingLetters.isEmpty()) {
 			this.result.add(wordAlreadyBuilt);
 		} else {
 			for (String singleLetter : missingLetters) {
 				List<String> subset = new LinkedList<>(missingLetters);
-				subset.remove(singleLetter);
-				recurse(wordAlreadyBuilt+singleLetter,subset);
+				subset.remove(singleLetter);				
+				if(dao.containsWordStartingWith(wordAlreadyBuilt+singleLetter)){
+					recurseWithDB(wordAlreadyBuilt+singleLetter,subset);
+				}
 			}
 		}
 	}
@@ -69,13 +86,19 @@ public class Anagrams {
 	public static void main(String[] args) {
 		Anagrams anagram = new Anagrams();
 		DAOword dao = new DAOword();
-		System.out.println(anagram.anagramOf("dog"));
+		System.out.println(anagram.anagramOf("pesce"));
 		
 		System.out.println(dao.countWords());
-		System.out.println(dao.getWordsOfLenght(28));
+		System.out.println(dao.getWordsOfLenght(31));
 		System.out.println(dao.contains("casa"));
 		System.out.println(dao.containsWordStartingWith("solar"));
 		System.out.println(dao.getWordsStartingWith("solar"));
+		
+		System.out.println();
+		
+		System.out.println(anagram.anagramUsingDatabaseOf("pesce"));
+		
+		
 		
 	}
 	

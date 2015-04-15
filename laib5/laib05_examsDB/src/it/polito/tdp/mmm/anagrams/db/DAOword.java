@@ -39,12 +39,6 @@ public class DAOword {
 		}
 	}
 	
-	public boolean existsWordStartingWith(String begin){
-		
-		
-		return false;
-	}
-	
 	public List<String> getWordsStartingWith(String begin){
 		Connection conn = DBConnect.getConnection();
 		ResultSet res = null;
