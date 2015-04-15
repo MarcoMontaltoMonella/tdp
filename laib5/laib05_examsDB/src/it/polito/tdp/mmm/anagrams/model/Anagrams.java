@@ -28,7 +28,31 @@ public class Anagrams {
 
 		return result;
 	}
+	
+	public List<String> anagramUsingDatabaseOf(String word) {
+		if (word.length() >= 6) {
+			System.err.println("Max length exceeded!");
+			return null;
+			
+			//1. word.length()
+			//2. words with the same length
+			//3. words with the same letters
+		}
+		
+		result = new LinkedList<>();
 
+		List<String> letters = new LinkedList<>();
+		for (int i = 0; i < word.length(); i++) {
+			letters.add(word.substring(i, i + 1));
+		}
+
+		this.recurse("", letters);
+
+		return result;
+	}
+	
+	
+	
 	private void recurse(String wordAlreadyBuilt, List<String> missingLetters) {
 
 		if (missingLetters.isEmpty()) {
@@ -48,6 +72,9 @@ public class Anagrams {
 		System.out.println(anagram.anagramOf("dog"));
 		
 		System.out.println(dao.countWords());
+		System.out.println(dao.getWordsOfLenght(28));
+		System.out.println(dao.contains("casa"));
+		System.out.println(dao.getWordsStartingWith("caset"));
 		
 	}
 	
