@@ -3,6 +3,8 @@
  */
 package it.polito.tdp.mmm.anagrams.model;
 
+import it.polito.tdp.mmm.anagrams.db.DAOword;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,6 +44,12 @@ public class Anagrams {
 
 	public static void main(String[] args) {
 		Anagrams anagram = new Anagrams();
+		DAOword dao = new DAOword();
 		System.out.println(anagram.anagramOf("dog"));
+		
+		System.out.println(dao.countWords());
+		
 	}
+	
+	
 }
