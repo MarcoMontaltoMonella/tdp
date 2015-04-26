@@ -75,7 +75,8 @@ public class Anagrams {
 		} else {
 			for (String singleLetter : missingLetters) {
 				List<String> subset = new LinkedList<>(missingLetters);
-				subset.remove(singleLetter);				
+				subset.remove(singleLetter);		
+				//BRANCH & BOUND
 				if(dao.containsWordStartingWith(wordAlreadyBuilt+singleLetter)){
 					recurseWithDB(wordAlreadyBuilt+singleLetter,subset);
 				}

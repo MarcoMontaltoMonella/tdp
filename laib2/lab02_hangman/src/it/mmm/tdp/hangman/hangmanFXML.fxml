@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="325.0" prefWidth="416.0" style="-fx-background-color: #FFFBAD; -fx-border-color: #ff9000; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.mmm.tdp.hangman.HangmanViewController">
+   <top>
+      <HBox prefHeight="46.0" prefWidth="408.0">
+         <children>
+            <Pane prefHeight="43.0" prefWidth="147.0" HBox.hgrow="ALWAYS" />
+            <Label text="Hangman" textAlignment="CENTER" textFill="#ff9000" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="Comic Sans MS" size="21.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Pane prefHeight="43.0" prefWidth="121.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Circle fx:id="statusCircle" fill="RED" layoutX="108.0" layoutY="23.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="75.0" text="Secret Word" textFill="#ff9000">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <PasswordField fx:id="secretWord" promptText="Type here, then start!" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="29.0" text="Char" textFill="#ff9000">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="alphabetComboBox" disable="true" onAction="#doChar" prefHeight="26.0" prefWidth="66.0" HBox.hgrow="NEVER" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <Label prefHeight="25.0" text="Mistakes" textFill="#ff9000" />
+                  <ProgressBar fx:id="progressBar" disable="true" prefHeight="20.0" prefWidth="164.0" progress="0.0">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </ProgressBar>
+                  <Label fx:id="numMistakes" prefHeight="25.0" text="0" textFill="#ff9000" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <Label prefHeight="25.0" text="Word" textFill="#ff9000" />
+                  <TextField fx:id="displayHiddenWord" disable="true" editable="false" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <Label prefHeight="25.0" text="Messages" textFill="#ff9000" />
+                  <TextField fx:id="displayMessages" disable="true" editable="false" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: #ff9000; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #ff9000; -fx-border-width: 3;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Line fx:id="stickBody" endX="30.0" layoutX="47.0" layoutY="96.0" rotate="-90.0" startX="-30.0" strokeLineCap="ROUND" strokeWidth="3.0" />
+                  <Line fx:id="stickRightLeg" endX="15.0" rotate="56.3" startX="-15.0" strokeLineCap="ROUND" strokeWidth="3.0" translateX="57.0" translateY="141.0" />
+                  <Line fx:id="stickLeftLeg" endX="15.0" layoutX="10.0" layoutY="10.0" rotate="127.9" startX="-15.0" strokeLineCap="ROUND" strokeWidth="3.0" translateX="27.0" translateY="130.0" />
+                  <Circle fx:id="stickHead" centerX="47.0" centerY="50.0" fill="#fffbad" radius="19.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+                  <Line fx:id="stickArmLeft" endX="20.0" layoutX="32.0" layoutY="90.0" rotate="-41.6" startX="-20.0" strokeLineCap="ROUND" strokeWidth="3.0" />
+                  <Line fx:id="stickArmRight" endX="20.0" layoutX="63.0" layoutY="93.0" rotate="-135.0" startX="-20.0" strokeLineCap="ROUND" strokeWidth="3.0" />
+                  <Circle fx:id="stickLeftEye" fill="#ffcb1e" layoutX="37.0" layoutY="46.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="stickRightEye" fill="#ffcb1e" layoutX="57.0" layoutY="46.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Arc fx:id="stickMouth" fill="#ff1f5d" layoutX="47.0" layoutY="64.0" length="180.0" radiusX="8.0" radiusY="12.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+                  <Line fx:id="ropeTop" endX="13.0" layoutX="51.0" layoutY="17.0" rotate="90.0" startX="-13.0" stroke="#a36217" strokeWidth="3.0" />
+                  <Line fx:id="ropeHang1" endX="5.0" layoutX="47.0" layoutY="70.0" startX="-5.0" stroke="#a36217" strokeLineCap="ROUND" strokeWidth="3.0" />
+                  <Line fx:id="ropeHang2" endX="5.0" layoutX="46.0" layoutY="73.0" startX="-5.0" stroke="#a36217" strokeLineCap="ROUND" strokeWidth="3.0" />
+                  <Label fx:id="youDied" layoutX="13.0" layoutY="165.0" text="YOU DIED!" textFill="#ff2d2d" visible="false">
+                     <font>
+                        <Font name="YouMurderer BB" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="1.0" prefWidth="94.0" style="-fx-border-color: #ff9000; -fx-border-width: 3;" />
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#doStart" prefHeight="41.0" prefWidth="90.0" text="Start">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="10.0" right="5.0" top="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </right>
+</BorderPane>
